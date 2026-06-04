@@ -101,7 +101,7 @@ def recon(target: str) -> dict:
     result["findings"].append(f" Detected type: {target_type}")
     result["data"]["target_type"] = target_type
 
-    # ─── psbdmp.ws Search (Pastebin Dumps) ──────────────────────
+
     result["findings"].append("\n Searching paste dump databases...")
     pastes = _search_psbdmp(target)
 
@@ -121,7 +121,7 @@ def recon(target: str) -> dict:
         result["findings"].append(" No pastes found in public dump databases")
         result["data"]["paste_count"] = 0
 
-    # ─── HIBP Breach Check (for emails) ─────────────────────────
+
     if target_type == "email":
         result["findings"].append("\n Checking data breach databases...")
         hibp = _check_hibp(target)
@@ -144,7 +144,7 @@ def recon(target: str) -> dict:
         else:
             result["warnings"].append("  Could not check HaveIBeenPwned (API unavailable)")
 
-    # ─── OSINT Leak Database Links ──────────────────────────────
+
     result["findings"].append("\n OSINT Leak Database Links:")
     lookup_links = []
 
